@@ -1,8 +1,8 @@
 # fanpidctrl
 Use IPMI to control the fans of some Supermicro boards (tested on X11SSH-LN4F).
 >[!NOTE]
->The default setting try to keep the temperature areound 60C
-it could be set by `-t [temperature]`
+>The default setting try to keep the temperature around 60C. You can change it with
+`-t [temperature]` option or set it in rc.conf with `fanpidctrl_flags="-t 55"`
 
 ### Simple install on FreeBSD as service
 ```
