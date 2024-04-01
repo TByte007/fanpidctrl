@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# PROVIDE: fanpidctrl
+# REQUIRE: NETWORKING
+# KEYWORD: shutdown
+#
+# fanpidctrl_enable (bool):    Set to "YES" to enable wireguard.
+#                             (default: "NO")
+#
+. /etc/rc.subr
+
+name=fanpidctrl
+command="/usr/local/sbin/fanpidctrl"
+rcvar=fanpidctrl_enable
+pidfile="/var/run/fanpidctrl.pid"
+
+load_rc_config $name
+
+: ${wireguard_enable="NO"}
+: ${wireguard_interfaces=""}
+: ${wireguard_env=""}
+
+run_rc_command "$1"
