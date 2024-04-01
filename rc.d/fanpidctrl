@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # PROVIDE: fanpidctrl
-# REQUIRE: NETWORKING
+# REQUIRE: root ldconfig devfs
 # KEYWORD: shutdown
 #
-# fanpidctrl_enable (bool):    Set to "YES" to enable wireguard.
+# fanpidctrl_enable (bool):    Set to "YES" to enable fanpidctrl.
 #                             (default: "NO")
 #
 . /etc/rc.subr
