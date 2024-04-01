@@ -77,7 +77,7 @@ def main():
 	# Get CPU fan PWM
 	lctr = int(subprocess.run([ipmitool, 'raw', '0x30', '0x70', '0x66', '0x00', '0x00'], stdout=subprocess.PIPE).stdout, 16)
 	# Get Periph fan PWM
-	#lctr[1] = int(subprocess.run(['ipmitool', 'raw', '0x30', '0x70', '0x66', '0x00', '0x01'], stdout=subprocess.PIPE).stdout)
+	#lctr[1] = int(subprocess.run(['ipmitool', 'raw', '0x30', '0x70', '0x66', '0x00', '0x01'], stdout=subprocess.PIPE).stdout, 16)
 
 	t = get_temp()
 	while True:
@@ -88,7 +88,6 @@ def main():
 #		print('PWM:', ctrl)
 		set_fans(ctrl)
 
-	    # Feed the PID output to the system and get its current value
 		t = get_temp()
 		sleep(st)
 
