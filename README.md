@@ -1,5 +1,5 @@
 # fanpidctrl
-Use IPMI to control the fans of a Supermicro boards.
+Use IPMI to control the fans of some Supermicro boards.
 >[!NOTE]
 >The default setting try to keep the temperature areound 60C
 it could be set by `-t [temperature]`
