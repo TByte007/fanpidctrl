@@ -1,8 +1,11 @@
 # fanpidctrl
 Use IPMI to control the fans of a Supermicro boards.
+>[!NOTE]
+>The default setting try to keep the temperature areound 60C
+it could be set by `-t [temperature]`
 
 ### Simple install on FreeBSD as service
-
+```
 python -m venv venv
 cd venv
 . bin/activate
@@ -12,3 +15,4 @@ sudo pyinstaller --onefile fanpidctrl.py --distpath /usr/local/sbin
 cp rc.d/fanpidctrl /usr/local/etc/rc.d
 echo 'fanpidctrl_enable="YES"' >> /etc/rc.conf
 service fanpidctrl start
+```
