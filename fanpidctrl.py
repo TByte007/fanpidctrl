@@ -98,20 +98,21 @@ def main():
 
 	# Get CPU fan PWM
 	lctr = int(ipmi_send_cmd('raw 0x30 0x70 0x66 0x00 0x00'))
-
 	# Get Periph fan PWM
 	#ipmi_send_cmd('raw 0x30 0x70 0x66 0x00 0x01')
 
 	t = get_temp()
 	while True:
-    	# Compute new output from the PID according to the systems current value
 #		print('Temps:', t)
 		ctrl = int(pidcpu(t))
 
 #		print('PWM:', ctrl)
 		set_fans(ctrl)
 
-		t = get_temp()
+		# just to be sure we got an actual temperature
+		nt = get_temp()
+		if nt != -1:
+			t = nt
 		sleep(st)
 
 daemon = Daemonize(app="fanpidctrl", pid=pidfile, action=main, foreground=foreground)
