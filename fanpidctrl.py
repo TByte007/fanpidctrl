@@ -4,7 +4,6 @@ import subprocess
 from daemonize import Daemonize
 import os, getopt, select
 from sys import argv
-#import sys
 
 ipmitool = '/usr/local/bin/ipmitool'
 pidfile = '/var/run/fanpidctrl.pid'
