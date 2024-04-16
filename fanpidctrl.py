@@ -90,9 +90,14 @@ def main():
 	# Set ipmitool to csv output
 	ipmi_send_cmd('set csv')
 
-	# Set the PWM control to full
-	ipmi_send_cmd('raw 0x30 0x45 0x01 0x01')
-	sleep(3) # wait for the command to take hold
+	# Check if the fans are set to Full
+	pwmc = int(ipmi_send_cmd('raw 0x30 0x45 0x00'))
+	if pwmc != 1:
+		# Set the PWM control to Full
+		# so the IPMI would not mess up with the management
+		# (it would be loud for few seconds after reboot)
+		ipmi_send_cmd('raw 0x30 0x45 0x01 0x01')
+		sleep(3) # wait for the command to take hold
 
 	set_fans(1) # set the fans to min
 
