@@ -99,7 +99,7 @@ def main():
 		ipmi_send_cmd('raw 0x30 0x45 0x01 0x01')
 		sleep(3) # wait for the command to take hold
 
-	set_fans(1) # set the fans to min
+	set_fans(min_pwm) # set the fans to min
 
 	# Get CPU fan PWM
 	lctr = int(ipmi_send_cmd('raw 0x30 0x70 0x66 0x00 0x00'))
